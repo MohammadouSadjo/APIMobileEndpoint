@@ -106,5 +106,32 @@ namespace APIMobileEndpoint.Controllers
             agriculturalTask.id = agriculturalTaskId;
             return new JsonResult(agriculturalTask);
         }
+
+        [HttpDelete("deleteagriculturaltask/{agriculturalTaskId}")]
+        public IActionResult DeleteAgriculturalTask(int agriculturalTaskId)
+        {
+            string query = "delete from tache_agricole where id_tache_agricole='" + agriculturalTaskId + "'";
+
+            string uid = "root";
+            string password = "";
+            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+                 "DATABASE=agrotech;" +
+                 "UID=" + uid + ";PASSWORD=" + password;
+
+            MySqlDataReader myReader;
+
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+
+            return new JsonResult("Deleted");
+        }
     }
 }
