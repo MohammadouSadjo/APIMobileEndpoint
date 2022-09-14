@@ -105,5 +105,32 @@ namespace APIMobileEndpoint.Controllers
             intervenant.id = intervenantId;
             return new JsonResult(intervenant);
         }
+
+        [HttpDelete("deleteintervenant/{intervenantId}")]
+        public IActionResult DeleteIntervenant(int intervenantId)
+        {
+            string query = "delete from intervenants where id_intervenant='" + intervenantId + "'";
+
+            string uid = "root";
+            string password = "";
+            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+                 "DATABASE=agrotech;" +
+                 "UID=" + uid + ";PASSWORD=" + password;
+
+            MySqlDataReader myReader;
+
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+
+            return new JsonResult("Deleted");
+        }
     }
 }
