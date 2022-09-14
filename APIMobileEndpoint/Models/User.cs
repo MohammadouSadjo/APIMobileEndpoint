@@ -1,4 +1,6 @@
-﻿namespace APIMobileEndpoint.Models
+﻿using System;
+
+namespace APIMobileEndpoint.Models
 {
     public class User
     {
@@ -6,5 +8,6 @@
         public string nom { get; set; }
         public string prenom { get; set; }
         public string email { get; set; }
+        public Boolean role { get; set; }
     }
 }
