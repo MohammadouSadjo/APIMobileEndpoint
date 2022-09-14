@@ -129,6 +129,34 @@ namespace APIMobileEndpoint.Controllers
 
             return new JsonResult(listMetrique);
         }
+
+        [HttpPost("addequipment")]
+        public IActionResult AddEquipment([FromBody] Equipment equipment)
+        {
+
+            string query = "insert into equipements(client_id,nom,description) values('" + equipment.clientId + "', '" + equipment.nom + "', '" + equipment.description + "')";
+
+            string uid = "root";
+            string password = "";
+            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+                 "DATABASE=agrotech;" +
+                 "UID=" + uid + ";PASSWORD=" + password;
+
+            MySqlDataReader myReader;
+
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+
+            return new JsonResult(equipment);
+        }
     }
 
     
