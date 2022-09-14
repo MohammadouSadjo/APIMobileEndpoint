@@ -78,5 +78,33 @@ namespace APIMobileEndpoint.Controllers
 
             return new JsonResult(agriculturalTask);
         }
+
+        [HttpPut("updateagriculturaltask/{agriculturalTaskId}")]
+        public IActionResult UpdateAgriculturalTask([FromBody] AgriculturalTask agriculturalTask, int agriculturalTaskId)
+        {
+            string query = "update tache_agricole set equipement_id='" + agriculturalTask.equipmentId + "',intervenant_id='" + agriculturalTask.intervenantId + "',description='" + agriculturalTask.description + "',date_execution='" + agriculturalTask.dateExecution + "' where id_tache_agricole='" + agriculturalTaskId + "'";
+
+            string uid = "root";
+            string password = "";
+            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+                 "DATABASE=agrotech;" +
+                 "UID=" + uid + ";PASSWORD=" + password;
+
+            MySqlDataReader myReader;
+
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+
+            agriculturalTask.id = agriculturalTaskId;
+            return new JsonResult(agriculturalTask);
+        }
     }
 }
