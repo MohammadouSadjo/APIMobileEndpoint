@@ -49,5 +49,33 @@ namespace APIMobileEndpoint.Controllers
 
             return new JsonResult(listIntervenant);
         }
+
+        [HttpPost("addintervenant")]
+        public IActionResult AddIntervenant([FromBody] Intervenant intervenant)
+        {
+
+            string query = "insert into intervenants(nom,prenom,telephone,email) values('" + intervenant.nom + "', '" + intervenant.prenom + "', '" + intervenant.telephone + "', '"+ intervenant.email +"')";
+
+            string uid = "root";
+            string password = "";
+            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+                 "DATABASE=agrotech;" +
+                 "UID=" + uid + ";PASSWORD=" + password;
+
+            MySqlDataReader myReader;
+
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+
+            return new JsonResult(intervenant);
+        }
     }
 }
