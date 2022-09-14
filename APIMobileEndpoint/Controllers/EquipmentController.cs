@@ -252,6 +252,49 @@ namespace APIMobileEndpoint.Controllers
 
             return new JsonResult("Deleted");
         }
+
+        [HttpGet("getlatestmetrics/{equipmentId}")]
+        public IActionResult GetLatestMetrics(int equipmentId)
+        {
+            string query = "select * from metriques where equipement_id='" + equipmentId + "'";
+
+            List<Metrique> listMetrique = new List<Metrique>();
+
+            string uid = "root";
+            string pwd = "";
+            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+                 "DATABASE=agrotech;" +
+                 "UID=" + uid + ";PASSWORD=" + pwd;
+
+            MySqlDataReader myReader;
+
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myReader = myCommand.ExecuteReader();
+
+                    while (myReader.Read())
+                    {
+                        listMetrique.Add(new Metrique()
+                        {
+                            id = (int)myReader.GetValue(0),
+                            equipmentId = (int)myReader.GetValue(1),
+                            movementTime = (string)myReader.GetValue(2),
+                            position = (string)myReader.GetValue(3),
+                            datetime = (DateTime)myReader.GetValue(4)
+                        });
+                    }
+
+                    myReader.Close();
+                    mycon.Close();
+                }
+
+            }
+
+            return new JsonResult(listMetrique);
+        }
     }
 
     
