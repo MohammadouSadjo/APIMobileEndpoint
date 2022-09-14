@@ -16,9 +16,9 @@ namespace APIMobileEndpoint.Controllers
             string query = "select * from tache_agricole";
             List<AgriculturalTask> listAgriculturalTask = new List<AgriculturalTask>();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
@@ -57,11 +57,11 @@ namespace APIMobileEndpoint.Controllers
 
             string query = "insert into tache_agricole(equipement_id,intervenant_id,description,date_execution) values('" + agriculturalTask.equipmentId + "', '" + agriculturalTask.intervenantId + "', '" + agriculturalTask.description + "', '" + agriculturalTask.dateExecution + "')";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 
@@ -84,11 +84,11 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "update tache_agricole set equipement_id='" + agriculturalTask.equipmentId + "',intervenant_id='" + agriculturalTask.intervenantId + "',description='" + agriculturalTask.description + "',date_execution='" + agriculturalTask.dateExecution + "' where id_tache_agricole='" + agriculturalTaskId + "'";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 
@@ -112,11 +112,11 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "delete from tache_agricole where id_tache_agricole='" + agriculturalTaskId + "'";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 

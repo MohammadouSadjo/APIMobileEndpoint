@@ -17,9 +17,9 @@ namespace APIMobileEndpoint.Controllers
             string truePassword;
             User user = new User();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
@@ -75,9 +75,9 @@ namespace APIMobileEndpoint.Controllers
             string truePassword;
             User user = new User();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 

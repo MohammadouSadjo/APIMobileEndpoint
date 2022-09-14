@@ -15,9 +15,9 @@ namespace APIMobileEndpoint.Controllers
             string query = "select * from intervenants";
             List<Intervenant> listIntervenant = new List<Intervenant>();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
@@ -56,11 +56,11 @@ namespace APIMobileEndpoint.Controllers
 
             string query = "insert into intervenants(nom,prenom,telephone,email) values('" + intervenant.nom + "', '" + intervenant.prenom + "', '" + intervenant.telephone + "', '"+ intervenant.email +"')";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 
@@ -83,11 +83,11 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "update intervenants set nom='" + intervenant.nom + "',prenom='" + intervenant.prenom + "',telephone='" + intervenant.telephone + "',email='"+ intervenant.email +"' where id_intervenant='" + intervenantId + "'";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 
@@ -111,11 +111,11 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "delete from intervenants where id_intervenant='" + intervenantId + "'";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 

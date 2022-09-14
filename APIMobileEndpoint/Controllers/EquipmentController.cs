@@ -16,9 +16,9 @@ namespace APIMobileEndpoint.Controllers
             string query = "select * from equipements where client_id='" + clientId + "'";
             List<Equipment> listEquipment = new List<Equipment>();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
@@ -56,9 +56,9 @@ namespace APIMobileEndpoint.Controllers
             string query = "select * from equipements";
             List<Equipment> listEquipment = new List<Equipment>();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
@@ -96,9 +96,9 @@ namespace APIMobileEndpoint.Controllers
             string query = "select * from metriques where equipement_id='" + equipmentId + "'";
             Metrique metrique = new Metrique();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
@@ -134,9 +134,9 @@ namespace APIMobileEndpoint.Controllers
 
             List<Metrique> listMetrique = new List<Metrique>();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
@@ -176,11 +176,11 @@ namespace APIMobileEndpoint.Controllers
 
             string query = "insert into equipements(client_id,nom,description) values('" + equipment.clientId + "', '" + equipment.nom + "', '" + equipment.description + "')";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 
@@ -203,11 +203,11 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "update equipements set client_id='"+ equipment.clientId +"',nom='"+ equipment.nom +"',description='"+ equipment.description +"' where id_equipement='"+ equipmentId +"'";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 
@@ -231,11 +231,11 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "delete from equipements where id_equipement='" + equipmentId + "'";
 
-            string uid = "root";
-            string password = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + password;
+                 "UID=" + uid + ";PASSWORD=" + pwd;
 
             MySqlDataReader myReader;
 
@@ -260,9 +260,9 @@ namespace APIMobileEndpoint.Controllers
 
             List<Metrique> listMetrique = new List<Metrique>();
 
-            string uid = "root";
-            string pwd = "";
-            string sqlDataSource = "SERVER=localhost;PORT=3306;" +
+            string uid = "sadjo";
+            string pwd = "1209*huaweiPhone";
+            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
                  "UID=" + uid + ";PASSWORD=" + pwd;
 
