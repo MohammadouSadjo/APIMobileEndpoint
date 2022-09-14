@@ -114,7 +114,7 @@ namespace APIMobileEndpoint.Controllers
                             user.nom = (string)myReader["nom"];
                             user.prenom = (string)myReader["prenom"];
                             user.email = (string)myReader["email"];
-                            user.role = (Boolean)myReader["role"];
+                            user.role = (string)myReader["role"];
 
                             myReader.Close();
                             mycon.Close();

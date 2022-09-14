@@ -8,6 +8,6 @@ namespace APIMobileEndpoint.Models
         public string nom { get; set; }
         public string prenom { get; set; }
         public string email { get; set; }
-        public Boolean role { get; set; }
+        public string role { get; set; }
     }
 }
