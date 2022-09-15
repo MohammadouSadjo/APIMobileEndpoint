@@ -87,7 +87,7 @@ namespace APIMobileEndpoint.Controllers
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
