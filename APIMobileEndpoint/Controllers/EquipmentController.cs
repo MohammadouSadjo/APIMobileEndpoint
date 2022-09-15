@@ -28,7 +28,8 @@ namespace APIMobileEndpoint.Controllers
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;*/
+                 "UID=" + uid + ";PASSWORD=" + pwd;
+            */
 
             MySqlDataReader myReader;
 
