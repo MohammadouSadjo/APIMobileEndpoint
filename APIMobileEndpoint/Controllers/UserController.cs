@@ -1,5 +1,6 @@
 ﻿using APIMobileEndpoint.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -10,21 +11,24 @@ namespace APIMobileEndpoint.Controllers
     [Route("user")]
     public class UserController : Controller
     {
+        private readonly IConfiguration _configuration;
+
+        public UserController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         [HttpGet("getusers")]
         public IActionResult GetUsers()
         {
             string query = "select * from clients";
             List<User> listUser = new List<User>();
 
-            string uid = "sadjo";
-            string pwd = "1209*huaweiPhone";
-            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
-                 "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+            
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -57,15 +61,11 @@ namespace APIMobileEndpoint.Controllers
             string query = "select * from administrateurs where role='"+role2+"'";
             List<User> listUser = new List<User>();
 
-            string uid = "sadjo";
-            string pwd = "1209*huaweiPhone";
-            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
-                 "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+            
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -98,15 +98,11 @@ namespace APIMobileEndpoint.Controllers
 
             string query = "insert into clients(nom,prenom,login,mot_de_passe,email) values('" + user.nom + "', '" + user.prenom + "', '" + user.login + "', '" + user.mot_de_passe + "','"+ user.email +"')";
 
-            string uid = "sadjo";
-            string pwd = "1209*huaweiPhone";
-            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
-                 "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+            
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))

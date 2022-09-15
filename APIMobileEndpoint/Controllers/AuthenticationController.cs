@@ -1,5 +1,6 @@
 ﻿using APIMobileEndpoint.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
 using System.Threading.Tasks;
@@ -10,6 +11,13 @@ namespace APIMobileEndpoint.Controllers
     [Route("authentication")]
     public class AuthenticationController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+
+        public AuthenticationController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         [HttpPost("login")]
         public IActionResult PostAuthentication([FromBody] LoginInformations loginInfo)
         {
@@ -17,15 +25,11 @@ namespace APIMobileEndpoint.Controllers
             string truePassword;
             User user = new User();
 
-            string uid = "sadjo";
-            string pwd = "1209*huaweiPhone";
-            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
-                 "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+            
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -75,15 +79,11 @@ namespace APIMobileEndpoint.Controllers
             string truePassword;
             User user = new User();
 
-            string uid = "sadjo";
-            string pwd = "1209*huaweiPhone";
-            string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
-                 "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+            
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
