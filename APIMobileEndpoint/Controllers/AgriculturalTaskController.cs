@@ -1,5 +1,6 @@
 ﻿using APIMobileEndpoint.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -10,21 +11,28 @@ namespace APIMobileEndpoint.Controllers
     [Route("agriculturaltask")]
     public class AgriculturalTaskController : Controller
     {
+        private readonly IConfiguration _configuration;
+
+        public AgriculturalTaskController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         [HttpGet("getagriculturaltask")]
         public IActionResult GetAgriculturalTask()
         {
             string query = "select * from tache_agricole";
             List<AgriculturalTask> listAgriculturalTask = new List<AgriculturalTask>();
 
-            string uid = "sadjo";
+            /*string uid = "sadjo";
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+                 "UID=" + uid + ";PASSWORD=" + pwd;*/
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -84,15 +92,15 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "update tache_agricole set equipement_id='" + agriculturalTask.equipmentId + "',intervenant_id='" + agriculturalTask.intervenantId + "',description='" + agriculturalTask.description + "',date_execution='" + agriculturalTask.dateExecution + "' where id_tache_agricole='" + agriculturalTaskId + "'";
 
-            string uid = "sadjo";
+            /*string uid = "sadjo";
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+                 "UID=" + uid + ";PASSWORD=" + pwd;*/
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -112,15 +120,15 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "delete from tache_agricole where id_tache_agricole='" + agriculturalTaskId + "'";
 
-            string uid = "sadjo";
+            /*string uid = "sadjo";
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+                 "UID=" + uid + ";PASSWORD=" + pwd;*/
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))

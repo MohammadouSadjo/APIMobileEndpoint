@@ -1,5 +1,6 @@
 ﻿using APIMobileEndpoint.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
@@ -9,21 +10,28 @@ namespace APIMobileEndpoint.Controllers
     [Route("intervenant")]
     public class IntervenantController : Controller
     {
+        private readonly IConfiguration _configuration;
+
+        public IntervenantController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         [HttpGet("getintervenants")]
         public IActionResult GetIntervenant()
         {
             string query = "select * from intervenants";
             List<Intervenant> listIntervenant = new List<Intervenant>();
 
-            string uid = "sadjo";
+            /*string uid = "sadjo";
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+                 "UID=" + uid + ";PASSWORD=" + pwd;*/
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -56,15 +64,15 @@ namespace APIMobileEndpoint.Controllers
 
             string query = "insert into intervenants(nom,prenom,telephone,email) values('" + intervenant.nom + "', '" + intervenant.prenom + "', '" + intervenant.telephone + "', '"+ intervenant.email +"')";
 
-            string uid = "sadjo";
+            /*string uid = "sadjo";
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+                 "UID=" + uid + ";PASSWORD=" + pwd;*/
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -83,15 +91,15 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "update intervenants set nom='" + intervenant.nom + "',prenom='" + intervenant.prenom + "',telephone='" + intervenant.telephone + "',email='"+ intervenant.email +"' where id_intervenant='" + intervenantId + "'";
 
-            string uid = "sadjo";
+            /*string uid = "sadjo";
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+                 "UID=" + uid + ";PASSWORD=" + pwd;*/
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
@@ -111,15 +119,15 @@ namespace APIMobileEndpoint.Controllers
         {
             string query = "delete from intervenants where id_intervenant='" + intervenantId + "'";
 
-            string uid = "sadjo";
+            /*string uid = "sadjo";
             string pwd = "1209*huaweiPhone";
             string sqlDataSource = "SERVER=projectdevmysql.mysql.database.azure.com;PORT=3306;" +
                  "DATABASE=agrotech;" +
-                 "UID=" + uid + ";PASSWORD=" + pwd;
+                 "UID=" + uid + ";PASSWORD=" + pwd;*/
 
             MySqlDataReader myReader;
 
-            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            using (MySqlConnection mycon = new MySqlConnection(_configuration.GetConnectionString("MyCon")))
             {
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
